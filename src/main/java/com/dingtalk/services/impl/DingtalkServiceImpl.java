@@ -2,10 +2,16 @@ package com.dingtalk.services.impl;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
+import com.dingtalk.api.DefaultDingTalkClient;
+import com.dingtalk.api.DingTalkClient;
+import com.dingtalk.api.request.OapiRobotSendRequest;
+import com.dingtalk.api.response.OapiRobotSendResponse;
+import com.dingtalk.model.ReceiveMsg;
 import com.dingtalk.services.DingtalkService;
+import com.taobao.api.ApiException;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.codec.binary.Base64;
-import org.apache.commons.codec.binary.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;
 
 import javax.crypto.Mac;
@@ -14,7 +20,7 @@ import javax.servlet.http.HttpServletRequest;
 import java.nio.charset.StandardCharsets;
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
-import java.util.Map;
+import java.util.Collections;
 
 /**
  * TODO description
@@ -43,12 +49,58 @@ public class DingtalkServiceImpl implements DingtalkService {
             log.error("Time expired or sign wrong.");
             return;
         }
-        // query 参数获取
-        Map<String, String[]> parameterMap = request.getParameterMap();
         log.info("【请求体参数】：{}", JSON.toJSONString(requestBody));
-        log.info("【query参数】：{}", JSON.toJSONString(parameterMap));
+        sendMsg(requestBody);
+    }
 
+    @Override
+    public void sendMsg(JSONObject requestBody) {
+        try {
+            ReceiveMsg receiveMsg = JSON.parseObject(JSON.toJSONString(requestBody), ReceiveMsg.class);
+            String sessionWebhook = receiveMsg.getSessionWebhook();
+            String userId = receiveMsg.getSenderStaffId();
+            String userNickName = receiveMsg.getSenderNick();
+            String receiveContent = receiveMsg.getText().getContent();
+            String sendContent = "请说点什么吧！";
+            if (StringUtils.isNotBlank(receiveContent)) {
+                sendContent = aiContent(receiveContent);
+            }
+            DingTalkClient client = new DefaultDingTalkClient(sessionWebhook);
+            OapiRobotSendRequest request = new OapiRobotSendRequest();
+            request.setMsgtype("text");
+            OapiRobotSendRequest.Text text = new OapiRobotSendRequest.Text();
 
+            text.setContent(" @" + userNickName + "  \n  " +
+                    sendContent);
+            request.setText(text);
+            OapiRobotSendRequest.At at = new OapiRobotSendRequest.At();
+            at.setIsAtAll(false);
+            at.setAtUserIds(Collections.singletonList(userId));
+            request.setAt(at);
+            OapiRobotSendResponse response = client.execute(request);
+            System.out.println(response.getBody());
+        } catch (ApiException e) {
+            log.error("Failed to send msg", e);
+        }
+    }
+
+    /**
+     * AI机器人回答
+     *
+     * @param content
+     * @return {@link String}
+     * @author 泽兔
+     * @date 2022/5/31 07:10
+     */
+    private String aiContent(String content) {
+        if (StringUtils.isBlank(content)) {
+            return "";
+        }
+        content = content.replace("你", "我");
+        content = content.replace("吗", "");
+        content = content.replace("?", "!");
+        content = content.replace("？", "！");
+        return content;
     }
 
     private String getSign(long postTimestamp) {

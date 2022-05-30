@@ -20,4 +20,13 @@ public interface DingtalkService {
      * @date 2022/5/22 21:40
      */
     void callback(HttpServletRequest request, JSONObject requestBody);
+
+    /**
+     * 发送消息
+     *
+     * @param requestBody
+     * @author 泽兔
+     * @date 2022/5/30 14:33
+     */
+    void sendMsg(JSONObject requestBody);
 }
