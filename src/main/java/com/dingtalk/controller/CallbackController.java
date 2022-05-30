@@ -5,6 +5,7 @@ import com.dingtalk.services.DingtalkService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
@@ -15,7 +16,8 @@ import javax.servlet.http.HttpServletRequest;
  * @author zetu
  * @date 2022/5/22
  */
-@RestController("api/msg")
+@RestController
+@RequestMapping("api/msg")
 public class CallbackController {
 
     @Autowired
