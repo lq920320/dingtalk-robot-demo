@@ -70,8 +70,7 @@ public class DingtalkServiceImpl implements DingtalkService {
             request.setMsgtype("text");
             OapiRobotSendRequest.Text text = new OapiRobotSendRequest.Text();
 
-            text.setContent(" @" + userNickName + "  \n  " +
-                    sendContent);
+            text.setContent(sendContent);
             request.setText(text);
             OapiRobotSendRequest.At at = new OapiRobotSendRequest.At();
             at.setIsAtAll(false);
