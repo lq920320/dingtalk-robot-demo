@@ -76,8 +76,7 @@ public class DingtalkServiceImpl implements DingtalkService {
             at.setIsAtAll(false);
             at.setAtUserIds(Collections.singletonList(userId));
             request.setAt(at);
-            OapiRobotSendResponse response = client.execute(request);
-            System.out.println(response.getBody());
+            client.execute(request);
         } catch (ApiException e) {
             log.error("Failed to send msg", e);
         }
