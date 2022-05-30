@@ -39,7 +39,7 @@ public class DingtalkServiceImpl implements DingtalkService {
         String sign = getSign(postTimestamp);
 
         long oneHourTimestamp = 3600000;
-        if (currentTimeStamp - postTimestamp >= oneHourTimestamp || StringUtils.equals(sign, postSign)) {
+        if (currentTimeStamp - postTimestamp >= oneHourTimestamp || !StringUtils.equals(sign, postSign)) {
             log.error("Time expired or sign wrong.");
             return;
         }
