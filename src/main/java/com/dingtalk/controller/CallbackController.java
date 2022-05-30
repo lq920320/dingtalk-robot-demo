@@ -23,7 +23,7 @@ public class CallbackController {
     @Autowired
     private DingtalkService dingtalkService;
 
-    @PostMapping("callback")
+    @RequestMapping("callback")
     public void callback(HttpServletRequest request, @RequestBody JSONObject requestBody) {
         dingtalkService.callback(request, requestBody);
     }
