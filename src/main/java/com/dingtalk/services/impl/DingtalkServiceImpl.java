@@ -35,7 +35,7 @@ public class DingtalkServiceImpl implements DingtalkService {
         log.info("post timestamp is: {}", postTimestamp);
 
         long currentTimeStamp = System.currentTimeMillis();
-
+        log.info("current timestamp is: {}", currentTimeStamp);
         String sign = getSign(postTimestamp);
 
         long oneHourTimestamp = 3600000;
@@ -47,7 +47,6 @@ public class DingtalkServiceImpl implements DingtalkService {
         Map<String, String[]> parameterMap = request.getParameterMap();
         log.info("【请求体参数】：{}", JSON.toJSONString(requestBody));
         log.info("【query参数】：{}", JSON.toJSONString(parameterMap));
-
 
 
     }
