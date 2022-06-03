@@ -87,14 +87,13 @@ public class DingtalkServiceImpl implements DingtalkService {
      *
      * @param content
      * @return {@link String}
-     * @author 泽兔
-     * @date 2022/5/31 07:10
      */
     private String aiContent(String content) {
         if (StringUtils.isBlank(content)) {
             return "";
         }
-        content = content.replace("你", "我");
+        content = content.replace("你", "");
+        content = content.replace("我", "");
         content = content.replace("吗", "");
         content = content.replace("?", "!");
         content = content.replace("？", "！");
