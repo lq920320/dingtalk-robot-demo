@@ -4,6 +4,13 @@ WORKDIR /srv
 COPY . /srv
 RUN cd /srv && mvn clean install -Dmanven.test.skip=true
 
+#定义时区参数
+ENV TZ=Asia/Shanghai
+
+#设置时区
+RUN ln -fs /usr/share/zoneinfo/${TZ} /etc/localtime \
+    && echo ${TZ} > /etc/timezone
+
 FROM openjdk:10.0.2-jre-slim
 
 EXPOSE 9090
