@@ -4,15 +4,13 @@ WORKDIR /srv
 COPY . /srv
 RUN cd /srv && mvn clean install -Dmanven.test.skip=true
 
-# 定义时区参数
-ENV TZ=Asia/Shanghai \
-    DEBIAN_FRONTEND=noninteractive
-
 # 设置时区
-RUN ln -fs /usr/share/zoneinfo/${TZ} /etc/localtime \
-    && echo ${TZ} > /etc/timezone \
-    && dpkg-reconfigure --frontend noninteractive tzdata \
-    && rm -rf /var/lib/apt/lists/*
+RUN apt-get update && \
+    apt-get install -yq tzdata && \
+    ln -fs /usr/share/zoneinfo/Asia/Shanghai /etc/localtime && \
+    dpkg-reconfigure -f noninteractive tzdata
+# 定义时区参数
+ENV TZ="Asia/Shanghai"
 
 FROM openjdk:10.0.2-jre-slim
 
