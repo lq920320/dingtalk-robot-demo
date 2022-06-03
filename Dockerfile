@@ -5,7 +5,6 @@ COPY . /srv
 RUN cd /srv && mvn clean install -Dmanven.test.skip=true
 
 # 设置时区
-RUN apt update && apt install tzdata -y
 ENV TZ="Asia/Shanghai"
 
 FROM openjdk:10.0.2-jre-slim
