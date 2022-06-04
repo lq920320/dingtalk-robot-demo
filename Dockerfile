@@ -5,7 +5,10 @@ COPY . /srv
 RUN cd /srv && mvn clean install -Dmanven.test.skip=true
 
 # 设置时区
-RUN ln -snf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime && date
+ENV TIME_ZONE Asiz/Shanghai
+RUN apk add --no-cache tzdata \
+    && echo "${TIME_ZONE}" > /etc/timezone \
+    && ln -sf /usr/share/zoneinfo/${TIME_ZONE} /etc/localtime
 
 FROM openjdk:10.0.2-jre-slim
 
