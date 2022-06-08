@@ -83,6 +83,7 @@ public class DingtalkServiceImpl implements DingtalkService {
             // 设置文本类型的消息内容
             text.setContent(sendContent);
             request.setText(text);
+            request.setFeedCard(receiveContent);
             // 选择你要@的成员，这里设置isAtAll为false，即不@全员
             OapiRobotSendRequest.At at = new OapiRobotSendRequest.At();
             at.setIsAtAll(false);
