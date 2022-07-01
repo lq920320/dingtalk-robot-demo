@@ -5,7 +5,7 @@ import com.alibaba.fastjson.JSONObject;
 import javax.servlet.http.HttpServletRequest;
 
 /**
- * TODO description
+ * 钉钉机器人接口
  *
  * @author zetu
  * @date 2022/5/22
@@ -29,4 +29,15 @@ public interface DingtalkService {
      * @date 2022/5/30 14:33
      */
     void sendMsg(JSONObject requestBody);
+
+    /**
+     * webhook机器人
+     *
+     * @param request
+     * @param requestBody
+     * @author 泽兔
+     * @date 2022/7/1 11:04
+     */
+    void webhook(HttpServletRequest request, JSONObject requestBody);
+
 }

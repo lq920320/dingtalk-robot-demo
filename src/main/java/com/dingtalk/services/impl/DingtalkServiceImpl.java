@@ -5,7 +5,6 @@ import com.alibaba.fastjson.JSONObject;
 import com.dingtalk.api.DefaultDingTalkClient;
 import com.dingtalk.api.DingTalkClient;
 import com.dingtalk.api.request.OapiRobotSendRequest;
-import com.dingtalk.api.response.OapiRobotSendResponse;
 import com.dingtalk.model.ReceiveMsg;
 import com.dingtalk.services.DingtalkService;
 import com.taobao.api.ApiException;
@@ -21,6 +20,7 @@ import java.nio.charset.StandardCharsets;
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
 import java.util.Collections;
+import java.util.Map;
 
 /**
  * TODO description
@@ -94,6 +94,21 @@ public class DingtalkServiceImpl implements DingtalkService {
         } catch (ApiException e) {
             log.error("Failed to send msg", e);
         }
+    }
+
+    @Override
+    public void webhook(HttpServletRequest request, JSONObject requestBody) {
+        // query 参数获取
+        Map<String, String[]> parameterMap = request.getParameterMap();
+        log.info("【query参数】：{}", JSON.toJSONString(parameterMap));
+        // 获取到请求头里的签名、时间戳
+        String requestMethod = request.getMethod();
+        String postSign = request.getHeader("Sign");
+        String codeEvent = request.getHeader("Codeup-Event");
+        log.info("request method is: {}", requestMethod);
+        log.info("request sign is: {}", postSign);
+        log.info("request codeUpEvent is: {}", codeEvent);
+        log.info("The request body is: {}", JSON.toJSONString(requestBody));
     }
 
     /**

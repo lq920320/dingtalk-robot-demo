@@ -26,4 +26,9 @@ public class CallbackController {
     public void callback(HttpServletRequest request, @RequestBody JSONObject requestBody) {
         dingtalkService.callback(request, requestBody);
     }
+
+    @RequestMapping("code/webhook")
+    public void webhook(HttpServletRequest request, @RequestBody JSONObject requestBody) {
+        dingtalkService.webhook(request, requestBody);
+    }
 }
