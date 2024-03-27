@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletRequest;
  */
 public interface DingtalkService {
     /**
-     * 处理发送的消息请求
+     * 处理发送的消息请求，钉钉机器人回调接口
      *
      * @param request
      * @param requestBody

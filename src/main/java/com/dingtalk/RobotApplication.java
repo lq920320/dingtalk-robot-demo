@@ -4,7 +4,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 /**
- * TODO description
+ * 钉钉机器人启动
  *
  * @author zetu
  * @date 2022/5/22

@@ -8,22 +8,21 @@ import com.dingtalk.api.request.OapiRobotSendRequest;
 import com.dingtalk.model.ReceiveMsg;
 import com.dingtalk.services.DingtalkService;
 import com.taobao.api.ApiException;
-import lombok.extern.slf4j.Slf4j;
-import org.apache.commons.codec.binary.Base64;
-import org.apache.commons.lang3.StringUtils;
-import org.springframework.stereotype.Service;
-
-import javax.crypto.Mac;
-import javax.crypto.spec.SecretKeySpec;
-import javax.servlet.http.HttpServletRequest;
 import java.nio.charset.StandardCharsets;
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
 import java.util.Collections;
 import java.util.Map;
+import javax.crypto.Mac;
+import javax.crypto.spec.SecretKeySpec;
+import javax.servlet.http.HttpServletRequest;
+import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.codec.binary.Base64;
+import org.apache.commons.lang3.StringUtils;
+import org.springframework.stereotype.Service;
 
 /**
- * TODO description
+ * 钉钉机器人接口实现类
  *
  * @author zetu
  * @date 2022/5/22
