@@ -16,7 +16,7 @@
 
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
-        <maven.compiler.target>17</maven.compiler.target>
+        <maven.compiler.target>8</maven.compiler.target>
         <dingtalk-sdk.version>1.3.53</dingtalk-sdk.version>
         <lombok.version>1.18.34</lombok.version>
         <dingtalk-service-sdk.version>2.0.0</dingtalk-service-sdk.version>
