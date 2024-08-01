@@ -4,3 +4,7 @@ spring:
   application:
     name: dingtalk-robot
 
+# huangli 相关配置
+huangli:
+  host:
+    url: https://www.36jxs.com/api

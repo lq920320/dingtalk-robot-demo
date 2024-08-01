@@ -4,7 +4,7 @@ WORKDIR /srv
 COPY . /srv
 RUN cd /srv && mvn clean install -Dmanven.test.skip=true
 
-FROM openjdk:10.0.2-jre-slim
+FROM openjdk:17.0.2-jdk-slim-buster
 
 # 设置时区
 ENV TZ=Asia/Shanghai

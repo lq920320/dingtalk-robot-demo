@@ -1,8 +1,9 @@
 package com.dingtalk.services;
 
-import com.alibaba.fastjson.JSONObject;
 
-import javax.servlet.http.HttpServletRequest;
+import com.alibaba.fastjson2.JSONObject;
+import jakarta.servlet.http.HttpServletRequest;
+
 
 /**
  * 钉钉机器人接口
