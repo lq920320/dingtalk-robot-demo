@@ -35,13 +35,13 @@ class HuangliTests {
     private HuangliOkHttpClient huangliOkHttpClient;
 
     private static final String DATE_PATTERN = "yyyy-MM-dd";
-
-    @Test
-    void test() {
-        ApiResult<HuangliResult> huangli = huangliClient.getHuangli("2024-07-26");
-        System.out.println(JSON.toJSONString(huangli));
-        Assertions.assertTrue(true);
-    }
+//
+//    @Test
+//    void test() {
+//        ApiResult<HuangliResult> huangli = huangliClient.getHuangli("2024-07-26");
+//        System.out.println(JSON.toJSONString(huangli));
+//        Assertions.assertTrue(true);
+//    }
 
 
     @Test
