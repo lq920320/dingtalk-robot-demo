@@ -10,8 +10,8 @@
     <servers/>
     <mirrors>
         <mirror>
-            <id>aliyunmaven</id>
-            <mirrorOf>central</mirrorOf>
+            <id>*</id>
+            <mirrorOf>aliyun,central,jcenter</mirrorOf>
             <name>阿里云公共仓库</name>
             <url>https://maven.aliyun.com/repository/central</url>
         </mirror>
@@ -22,7 +22,7 @@
             <url>http://repo1.maven.org/maven2/</url>
         </mirror>
         <mirror>
-            <id>aliyunmaven</id>
+            <id>aliyun</id>
             <mirrorOf>apache snapshots</mirrorOf>
             <name>阿里云阿帕奇仓库</name>
             <url>https://maven.aliyun.com/repository/apache-snapshots</url>
@@ -30,16 +30,15 @@
     </mirrors>
     <proxies/>
     <activeProfiles>
-        <activeProfile>default</activeProfile>
-        <activeProfile>aliyunmaven</activeProfile>
+        <activeProfile>aliyun</activeProfile>
     </activeProfiles>
     <profiles>
         <profile>
-            <id>aliyunmaven</id>
+            <id>aliyun</id>
             <repositories>
                 <repository>
-                    <id>aliyunmaven</id>
-                    <name>aliyunmaven</name>
+                    <id>aliyun</id>
+                    <name>aliyun</name>
                     <url>https://maven.aliyun.com/repository/public</url>
                     <layout>default</layout>
                     <releases>
