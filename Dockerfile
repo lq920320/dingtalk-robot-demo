@@ -1,11 +1,9 @@
 FROM  maven:3.8.5-openjdk-17-slim AS build
 WORKDIR /srv
 
-RUN ll
 RUN pwd
 
 COPY . /srv
-COPY ./settings.xml /srv/maven/settings.xml
 RUN cd /srv && mvn clean install -Dmanven.test.skip=true
 
 FROM openjdk:17.0.2-jdk-slim-buster
