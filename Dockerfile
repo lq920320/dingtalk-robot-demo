@@ -4,8 +4,8 @@ WORKDIR /srv
 RUN ll
 RUN pwd
 
-COPY settings.xml /etc/maven/settings.xml
 COPY . /srv
+COPY settings.xml /srv/maven/settings.xml
 RUN cd /srv && mvn clean install -Dmanven.test.skip=true
 
 FROM openjdk:17.0.2-jdk-slim-buster
