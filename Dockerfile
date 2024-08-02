@@ -1,4 +1,5 @@
 FROM  maven:3.8.5-openjdk-17-slim AS build
+COPY setting.xml /usr/share/maven/conf/setting.xml
 WORKDIR /srv
 
 RUN pwd
