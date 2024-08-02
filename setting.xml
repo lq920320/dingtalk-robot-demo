@@ -29,7 +29,10 @@
         </mirror>
     </mirrors>
     <proxies/>
-    <activeProfiles/>
+    <activeProfiles>
+        <activeProfile>default</activeProfile>
+        <activeProfile>aliyunmaven</activeProfile>
+    </activeProfiles>
     <profiles>
         <profile>
             <id>aliyunmaven</id>
