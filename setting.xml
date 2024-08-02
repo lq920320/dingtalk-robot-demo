@@ -13,7 +13,7 @@
             <id>*</id>
             <mirrorOf>aliyun,central,jcenter</mirrorOf>
             <name>阿里云公共仓库</name>
-            <url>https://maven.aliyun.com/repository/central</url>
+            <url>https://maven.aliyun.com/nexus/content/groups/public/</url>
         </mirror>
         <mirror>
             <id>repo1</id>
@@ -39,7 +39,7 @@
                 <repository>
                     <id>aliyun</id>
                     <name>aliyun</name>
-                    <url>https://maven.aliyun.com/repository/public</url>
+                    <url>https://maven.aliyun.com/nexus/content/groups/public/</url>
                     <layout>default</layout>
                     <releases>
                         <enabled>true</enabled>
